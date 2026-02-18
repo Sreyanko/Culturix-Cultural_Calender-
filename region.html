@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Culturix | Regions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">Culturix</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mood.html">Mood Explorer</a></li>
+            <li><a href="calendar.html">Cultural Calendar</a></li>
+            <li><a href="region.html" class="active">Regions</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            🌓
+        </button>
+    </nav>
+
+    <header class="hero"
+        style="min-height: 40vh; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600');">
+        <div class="hero-content">
+            <h1>Explore by Region</h1>
+            <p>Journey through the diverse cultures of the world.</p>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 4rem 5%;">
+
+        <div class="cta-group" style="margin-bottom: 3rem; justify-content: center;">
+            <button class="btn btn-secondary region-btn active" data-region="All"
+                style="border-color:var(--primary); color:var(--text);">All</button>
+            <button class="btn btn-secondary region-btn" data-region="Asia"
+                style="border-color:var(--primary); color:var(--text);">Asia</button>
+            <button class="btn btn-secondary region-btn" data-region="Europe"
+                style="border-color:var(--primary); color:var(--text);">Europe</button>
+            <button class="btn btn-secondary region-btn" data-region="Americas"
+                style="border-color:var(--primary); color:var(--text);">Americas</button>
+            <button class="btn btn-secondary region-btn" data-region="Africa"
+                style="border-color:var(--primary); color:var(--text);">Africa</button>
+        </div>
+
+        <div class="features" id="regions-grid"
+            style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); padding: 0; background: transparent;">
+            <!-- Region cards injected by script.js -->
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Culturix Hackathon Project. All rights reserved.</p>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <button id="chat-toggle" class="chat-toggle-btn" aria-label="Open Chat">
+            💬
+        </button>
+        <div class="chat-window hidden" id="chat-window">
+            <div class="chat-header">
+                <h3>Culturix Bot</h3>
+                <button id="chat-close" class="chat-close-btn">&times;</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    Hello! I'm your cultural guide. Ask me anything about festivals, traditions, or moods!
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask about a festival..." aria-label="Type your message">
+                <button id="chat-send" aria-label="Send message">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

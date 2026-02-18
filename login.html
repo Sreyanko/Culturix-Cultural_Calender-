@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culturix | Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-container {
+            max-width: 400px;
+            margin: 5rem auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .auth-container h2 {
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .toggle-auth {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .error-msg {
+            color: red;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">Culturix</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mood.html">Mood Explorer</a></li>
+            <li><a href="calendar.html">Cultural Calendar</a></li>
+            <li><a href="region.html">Regions</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <button id="theme-toggle">🌓</button>
+    </nav>
+
+    <div class="auth-container">
+        <h2 id="form-title">Login</h2>
+        <div id="error-message" class="error-msg"></div>
+        <form id="auth-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+        </form>
+        <p class="toggle-auth" id="toggle-auth">Don't have an account? Register</p>
+    </div>
+
+    <script>
+        const form = document.getElementById('auth-form');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const toggleBtn = document.getElementById('toggle-auth');
+        const formTitle = document.getElementById('form-title');
+        const submitBtn = form.querySelector('button');
+        const errorMsg = document.getElementById('error-message');
+
+        let isLogin = true;
+
+        toggleBtn.addEventListener('click', () => {
+            isLogin = !isLogin;
+            formTitle.textContent = isLogin ? 'Login' : 'Register';
+            submitBtn.textContent = isLogin ? 'Login' : 'Register';
+            toggleBtn.textContent = isLogin ? "Don't have an account? Register" : "Already have an account? Login";
+            errorMsg.style.display = 'none';
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+            const endpoint = isLogin ? '/api/login' : '/api/register';
+
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    if (isLogin) {
+                        window.location.href = 'logbook.html';
+                    } else {
+                        // Auto login after register or just switch to login
+                        alert('Registration successful! Please login.');
+                        isLogin = true;
+                        formTitle.textContent = 'Login';
+                        submitBtn.textContent = 'Login';
+                        toggleBtn.textContent = "Don't have an account? Register";
+                    }
+                } else {
+                    errorMsg.textContent = data.error;
+                    errorMsg.style.display = 'block';
+                }
+            } catch (err) {
+                console.error(err);
+                errorMsg.textContent = 'An error occurred. Please try again.';
+                errorMsg.style.display = 'block';
+            }
+        });
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

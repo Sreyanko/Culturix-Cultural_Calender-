@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Culturix | About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">Culturix</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mood.html">Mood Explorer</a></li>
+            <li><a href="calendar.html">Cultural Calendar</a></li>
+            <li><a href="region.html">Regions</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            🌓
+        </button>
+    </nav>
+
+    <header class="hero"
+        style="min-height: 50vh; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1600');">
+        <div class="hero-content">
+            <h1>About Culturix</h1>
+            <p>Bridging cultures, one festival at a time.</p>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 5rem 5%;">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2
+                style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem;">
+                Our Mission</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 3rem;">
+                Culturix is dedicated to preserving and sharing the rich tapestry of global traditions.
+                We believe that understanding the "Cultural DNA" of festivals — their origins, foods, and moods —
+                helps connect people across borders and generations.
+            </p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>🌍 Global Reach</h3>
+                <p>Curating festivals from every continent to showcase diversity.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📚 Educational</h3>
+                <p>Providing deep insights into the history and symbolism of traditions.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🤝 Community</h3>
+                <p>Building a community of culture enthusiasts and explorers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section style="background: var(--secondary); padding: 5rem 5%; text-align: center;">
+        <h2
+            style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 3rem; color: var(--primary);">
+            Meet the Team</h2>
+        <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+
+            <div
+                style="background: var(--card-bg); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); width: 250px;">
+                <div
+                    style="width: 100px; height: 100px; background: #ddd; border-radius: 50%; margin: 0 auto 1rem; overflow: hidden;">
+                    <img src="#" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Surjadeep Das</h4>
+                <p style="font-size: 0.9rem; color: var(--primary);">Founder & Lead Curator</p>
+            </div>
+
+            <div
+                style="background: var(--card-bg); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); width: 250px;">
+                <div
+                    style="width: 100px; height: 100px; background: #ddd; border-radius: 50%; margin: 0 auto 1rem; overflow: hidden;">
+                    <img src="#" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Sreyanko Sinha</h4>
+                <p style="font-size: 0.9rem; color: var(--primary);">Tech Lead</p>
+            </div>
+
+            <div
+                style="background: var(--card-bg); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); width: 250px;">
+                <div
+                    style="width: 100px; height: 100px; background: #ddd; border-radius: 50%; margin: 0 auto 1rem; overflow: hidden;">
+                    <img src="#" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Mayukh Sarkar</h4>
+                <p style="font-size: 0.9rem; color: var(--primary);">Community Manager</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Culturix Hackathon Project. All rights reserved.</p>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <button id="chat-toggle" class="chat-toggle-btn" aria-label="Open Chat">
+            💬
+        </button>
+        <div class="chat-window hidden" id="chat-window">
+            <div class="chat-header">
+                <h3>Culturix Bot</h3>
+                <button id="chat-close" class="chat-close-btn">&times;</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    Hello! I'm your cultural guide. Ask me anything about festivals, traditions, or moods!
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask about a festival..." aria-label="Type your message">
+                <button id="chat-send" aria-label="Send message">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culturix | Mood Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">Culturix</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mood.html" class="active">Mood Explorer</a></li>
+            <li><a href="calendar.html">Cultural Calendar</a></li>
+            <li><a href="region.html">Regions</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            🌓
+        </button>
+    </nav>
+
+    <header class="hero" style="min-height: 40vh;">
+        <div class="hero-content">
+            <h1>Find Your Vibe</h1>
+            <p>Discover festivals based on how you feel today.</p>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 4rem 5%;">
+
+        <div class="cta-group" style="margin-bottom: 3rem; justify-content: center;">
+            <button class="btn btn-secondary mood-btn active"
+                style="border-color:var(--primary); color:var(--text);">All</button>
+            <button class="btn btn-secondary mood-btn"
+                style="border-color:var(--primary); color:var(--text);">Celebration</button>
+            <button class="btn btn-secondary mood-btn"
+                style="border-color:var(--primary); color:var(--text);">Spiritual</button>
+            <button class="btn btn-secondary mood-btn"
+                style="border-color:var(--primary); color:var(--text);">Harvest</button>
+            <button class="btn btn-secondary mood-btn"
+                style="border-color:var(--primary); color:var(--text);">Family</button>
+        </div>
+
+        <div class="features" id="mood-grid"
+            style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); padding: 0; background: transparent;">
+            <!-- Mood cards injected by script.js -->
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Culturix Hackathon Project. All rights reserved.</p>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <button id="chat-toggle" class="chat-toggle-btn" aria-label="Open Chat">
+            💬
+        </button>
+        <div class="chat-window hidden" id="chat-window">
+            <div class="chat-header">
+                <h3>Culturix Bot</h3>
+                <button id="chat-close" class="chat-close-btn">&times;</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    Hello! I'm your cultural guide. Ask me anything about festivals, traditions, or moods!
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask about a festival..." aria-label="Type your message">
+                <button id="chat-send" aria-label="Send message">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>

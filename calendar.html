@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Culturix | Cultural Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Culturix</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mood.html">Mood Explorer</a></li>
+            <li><a href="calendar.html" class="active">Cultural Calendar</a></li>
+            <li><a href="region.html">Regions</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            🌓
+        </button>
+    </nav>
+
+    <div class="hero" style="min-height: 40vh;">
+        <div class="hero-content">
+            <h1>Cultural Calendar</h1>
+            <p>Track global festivities in real-time.</p>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container"
+        style="max-width: 1200px; margin: -5rem auto 3rem; padding: 0 5%; position: relative; z-index: 2;">
+
+        <!-- Countdown Widget -->
+        <div class="countdown-widget">
+            <div class="countdown-bg"></div>
+            <h2
+                style="font-family: 'Playfair Display', serif; margin-bottom: 0.5rem; font-size:1.5rem; text-transform:uppercase; letter-spacing:2px; opacity:0.9;">
+                Upcoming Festival</h2>
+            <div id="nextFestName"
+                style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; text-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+                Loading...</div>
+            <div class="timer-grid">
+                <div class="time-box">
+                    <span id="days" class="time-val">00</span>
+                    <span class="time-label">Days</span>
+                </div>
+                <div class="time-box">
+                    <span id="hours" class="time-val">00</span>
+                    <span class="time-label">Hrs</span>
+                </div>
+                <div class="time-box">
+                    <span id="minutes" class="time-val">00</span>
+                    <span class="time-label">Min</span>
+                </div>
+                <div class="time-box">
+                    <span id="seconds" class="time-val">00</span>
+                    <span class="time-label">Sec</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters"
+            style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 2rem; background: var(--card-bg); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow-sm);">
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <select id="regionFilter"
+                    style="padding: 0.8rem 1.5rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); background: var(--bg); color: var(--text); font-family: inherit; cursor: pointer;">
+                    <option value="all">🌍 All Regions</option>
+                    <option value="asia">Asia</option>
+                    <option value="europe">Europe</option>
+                    <option value="americas">Americas</option>
+                    <option value="africa">Africa</option>
+                    <option value="oceania">Oceania</option>
+                    <option value="global">Global</option>
+                </select>
+                <select id="moodFilter"
+                    style="padding: 0.8rem 1.5rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); background: var(--bg); color: var(--text); font-family: inherit; cursor: pointer;">
+                    <option value="all">🎭 All Moods</option>
+                    <option value="spiritual">Spiritual</option>
+                    <option value="celebratory">Celebratory</option>
+                    <option value="harvest">Harvest</option>
+                    <option value="family">Family</option>
+                </select>
+            </div>
+            <button id="todayBtn" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">📍 Jump to
+                Today</button>
+        </div>
+
+        <div id="filterStatus" style="text-align: center; margin-bottom: 2rem; opacity: 0.6; font-size: 0.9rem;">Showing
+            all festivals</div>
+
+        <!-- Calendar Component -->
+        <div class="calendar-wrapper">
+            <div class="calendar-header-nav">
+                <button id="prevBtn" class="btn btn-secondary"
+                    style="border-color: rgba(0,0,0,0.1); color: var(--text); padding: 0.5rem 1rem;">&larr;</button>
+                <h2 id="monthYear"
+                    style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary);">Loading...
+                </h2>
+                <button id="nextBtn" class="btn btn-secondary"
+                    style="border-color: rgba(0,0,0,0.1); color: var(--text); padding: 0.5rem 1rem;">&rarr;</button>
+            </div>
+            <div class="calendar-grid" id="calendar"></div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="festivalModal">
+        <div class="modal-content" id="modalBody">
+            <!-- Content injected by JS -->
+        </div>
+        <span id="modalClose"
+            style="position: fixed; top: 2rem; right: 2rem; font-size: 3rem; color: white; cursor: pointer; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">&times;</span>
+    </div>
+
+    <footer class="footer" style="margin-top: 5rem;">
+        <p>&copy; 2026 Culturix Hackathon Project. All rights reserved.</p>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="chat-widget">
+        <button id="chat-toggle" class="chat-toggle-btn" aria-label="Open Chat">
+            💬
+        </button>
+        <div class="chat-window hidden" id="chat-window">
+            <div class="chat-header">
+                <h3>Culturix Bot</h3>
+                <button id="chat-close" class="chat-close-btn">&times;</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    Hello! I'm your cultural guide. Ask me anything about festivals, traditions, or moods!
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask about a festival..." aria-label="Type your message">
+                <button id="chat-send" aria-label="Send message">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
